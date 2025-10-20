@@ -1,0 +1,9 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/Coooder-Crypto/OwnFace-backend
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Coooder-Crypto/OwnFace-frontend
+[submodule "contract"]
+	path = contract
+	url = https://github.com/Coooder-Crypto/OwnFace-contract
