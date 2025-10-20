@@ -1,5 +1,7 @@
 # OwnFace
 
+**Own Your Face Before Own Your Data**
+
 ## Repository Layout
 
 This meta repository aggregates the three main OwnFace projects as Git submodules:
