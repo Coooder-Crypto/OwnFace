@@ -216,3 +216,10 @@ ETHERSCAN_API_KEY=""
 
 欢迎提交 Issue / PR、共建电路、审计合约或探讨集成合作。  
 For collaboration or security review, reach out anytime—we are building privacy-first biometric identity for Web3 together.
+
+---
+
+## Citation · 参考文献
+
+如果你在研究或发表中引用 OwnFace，请参考：  
+K. Guo, Z. Fu, Y. Liu, et al. **“BioID: Zero-Knowledge Proofs for Privacy-Preserving Biometric Authentication.”** arXiv:2409.17509, 2024. <https://arxiv.org/abs/2409.17509>
