@@ -1,24 +1,27 @@
-# OwnFace · 自有脸
+# OwnFace
 
-**Own Your Face Before Own Your Data · 先拥有你的脸，再拥有你的数据**
+**Own Your Face Before Own Your Data**
 
 OwnFace 是一套端到端的零知识生物认证栈：前端采集脸部嵌入向量，后端通过 Pedersen 承诺与 Groth16 证明封装隐私，智能合约在链上验证证明并记录认证快照。  
-This repository consolidates the architecture, implementation, and roadmap described across `PROJECT_PLAN.md`, `README1.md`, and the subsystem docs, providing a bilingual reference for developers and reviewers.
 
 ---
 
 ## 目录 · Table of Contents
 
-1. [项目概述 Overview](#项目概述--overview)  
-2. [系统结构 Architecture](#系统结构--architecture)  
-3. [隐私与密码学 Privacy & Cryptography](#隐私与密码学--privacy--cryptography)  
-4. [组件划分 Components](#组件划分--components)  
-5. [端到端流程 Workflow](#端到端流程--workflow)  
-6. [快速开始 Getting Started](#快速开始--getting-started)  
-7. [环境变量 Environment Variables](#环境变量--environment-variables)  
-8. [合约部署 Contracts](#合约部署--contracts)  
-9. [路线图 Roadmap](#路线图--roadmap)  
-10. [团队与联系 Team & Contact](#团队与联系--team--contact)
+- [OwnFace](#ownface)
+  - [目录 · Table of Contents](#目录--table-of-contents)
+  - [项目概述 · Overview](#项目概述--overview)
+  - [系统结构 · Architecture](#系统结构--architecture)
+  - [隐私与密码学 · Privacy \& Cryptography](#隐私与密码学--privacy--cryptography)
+    - [Pedersen 承诺 · Pedersen Commitments](#pedersen-承诺--pedersen-commitments)
+    - [Poseidon 哈希 · Poseidon Hashing](#poseidon-哈希--poseidon-hashing)
+    - [Groth16 证明 · Groth16 Proofs](#groth16-证明--groth16-proofs)
+  - [组件划分 · Components](#组件划分--components)
+  - [端到端流程 · Workflow](#端到端流程--workflow)
+  - [快速开始 · Getting Started](#快速开始--getting-started)
+  - [环境变量 · Environment Variables](#环境变量--environment-variables)
+  - [合约部署 · Contracts](#合约部署--contracts)
+  - [团队与联系 · Team \& Contact](#团队与联系--team--contact)
 
 ---
 
@@ -105,13 +108,6 @@ This repository consolidates the architecture, implementation, and roadmap descr
 2. **认证 Authentication**  
    - 前端采集新 embedding → 后端 `/authenticate` 生成 Groth16 证明及公开信号；  
    - 前端提交 `authenticate` 交易，合约校验证明与哈希比对，留下 `VerificationRecord`。  
-3. **获取快照 Snapshots**  
-   - 任意客户端可调用 `getCommitment` 与 `getVerification` 获取实时链上状态，或直接监听事件。  
-4. **指标监控 Metrics**  
-   - `/metrics` 返回注册数、认证数、平均证明耗时与最近一次证明数据，用于运营看板或自定义监控。
-
-整个流程无“伪造写入”，即使前端为了更好的 UX 在 3 秒后弹出成功提示，底层仍会等待真实交易回执并刷新链上快照。
-
 ---
 
 ## 快速开始 · Getting Started
@@ -207,37 +203,14 @@ ETHERSCAN_API_KEY=""
 
 ---
 
-## 路线图 · Roadmap
-
-来自 `PROJECT_PLAN.md` 与 `README1.md` 的关键节点：
-
-- **赛后 1-3 周 / Weeks 1-3**  
-  - 完成合约 Etherscan 验证与自动化部署脚本。  
-  - 后端存储迁移至 SQLite/PostgreSQL，并提供备份 / 审计工具。  
-  - 发布中文版 Demo 视频与技术白皮书草稿。
-
-- **赛后 1-3 个月 / Months 1-3**  
-  - 上线移动端轻客户端 SDK，支持离线 embedding 与本地签名。  
-  - 将 prover 服务模块化，支持 GPU 加速与云端编排。  
-  - 与合作方对接 2-3 个真实业务场景（KYC、DAO 访问控制、带生物因子的 MPC 钱包）。
-
-- **长期价值 / Long-term impact**  
-  - 构建开源、可审计、可扩展的零知识生物认证基建，推动 Web3 身份体系标准化。  
-  - 促进生物识别 + ZKP 的跨项目互操作，降低合规成本与接入门槛。
-
----
 
 ## 团队与联系 · Team & Contact
 
 - **团队 Team**：OwnFace Core  
 - **成员 Members**：  
-  - Coooder — 全栈工程师 / Full-stack (架构、前端、合约集成)  
-  - 0xBiometric — 密码学工程师 / Cryptography (Circom 电路、Groth16 证明)  
-  - Sora — 产品设计师 / Product (体验设计、运营内容)  
+  - Coooder — 全栈工程师 / Full-stack (架构、前端、合约集成)   
 - **联系方式 Contact**：  
   - GitHub Issues: <https://github.com/Coooder-Crypto/OwnFace/issues>  
-  - Telegram: `@ownface_xyz`（如频道暂未开放，可通过 Issues 预约演示）  
-- **可演示时段 Demo availability**：UTC+8 每日 10:00 - 22:00
 
 ---
 
